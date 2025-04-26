@@ -1,0 +1,10 @@
+CREATE TABLE conserto (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    data_entrada VARCHAR(100) NOT NULL,
+    data_saida VARCHAR(100) NOT NULL,
+    marca VARCHAR(100) NOT NULL,
+    modelo VARCHAR(100) NOT NULL,
+    ano VARCHAR(10) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    experiencia VARCHAR(100) NOT NULL
+);
