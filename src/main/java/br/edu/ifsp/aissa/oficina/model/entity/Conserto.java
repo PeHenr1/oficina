@@ -4,13 +4,14 @@ import br.edu.ifsp.aissa.oficina.model.dto.DadosConserto;
 import br.edu.ifsp.aissa.oficina.model.dto.DadosConsertoAtualizacao;
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.UUID;
 
 @Table(name = "conserto")
 @Entity(name = "Conserto")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Conserto {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -25,6 +26,10 @@ public class Conserto {
     @Embedded
     private Veiculo veiculo;
     private Boolean ativo;
+
+    @EqualsAndHashCode.Include
+    @Column(nullable = false, unique = true, updatable = false)
+    private final String uuid = UUID.randomUUID().toString();
 
     public Conserto (DadosConserto dados){
         this.ativo = true;
